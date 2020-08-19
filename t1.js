@@ -12,26 +12,26 @@ function toLine(name) {
 }
 
 // axios下载流文件
-// axios({
-//     method: "get/post",
-//     url: "xxx",
-//     data: data,
-//     responseType: "blob"
-// }).then(res => {
-//     let blob = new Blob([res.data / xxxx], {
-//         type: "application/vnd.ms-excel"
-//     })
-//     // 获取name
-//     let tempName = res.headers['content-disposition'].split(";")[1].split("filename=")[1]
-//     // 动态创建a标签下载
-//     const link = document.createElement("a")
-//     link.style.display = "none"
-//     link.href = URL.createObjectURL(blob)
-//     link.setAttribute("download", decodeURIComponent(tempName))
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-// })
+axios({
+    method: "get/post",
+    url: "xxx",
+    data: data,
+    responseType: "blob"
+}).then(res => {
+    let blob = new Blob([res.data / xxxx], {
+        type: "application/vnd.ms-excel"
+    })
+    // 获取name
+    let tempName = res.headers['content-disposition'].split(";")[1].split("filename=")[1]
+    // 动态创建a标签下载
+    const link = document.createElement("a")
+    link.style.display = "none"
+    link.href = URL.createObjectURL(blob)
+    link.setAttribute("download", decodeURIComponent(tempName))
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+})
 
 
 
