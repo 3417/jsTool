@@ -32,3 +32,25 @@ for(let i=0;i<res.length;i++){
         data[res[i].xxxx].push(res[i])
     }
 }
+
+// 5.拼接数据到url后面
+function isObj(obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
+}
+
+function splicObj(obj) {
+    // 如果不是对象返回null
+    if (!isObj) {
+        return null;
+    }
+    // 如果是对象
+    const URL = Object.keys(obj).reduce((item,index) => {
+        if(obj[index]){
+            item.push(index + '=' + obj[index])
+        }
+        return item;
+    },[]).join("&");
+    return URL;
+}
+
+let url = `?${splicObj({name:'张三',age:22})}`
