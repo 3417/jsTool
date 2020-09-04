@@ -117,3 +117,19 @@ const getAgeByIdCard = (idcard) => {
 const isLeapYear = (year) => {
     return year % 4 === 0 && yeat % 100 !== 0 ? 1 : (year % 400 === 0 ? 1 : 0);
 }
+
+// 8.判断页面的底部是否可见
+const bottomVisible = () => {
+    document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight || document.documentElement.clientHeight
+}
+
+// 9.获取滚动条的位置
+const getScrollPosition = (el = window) => ({
+    x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+    y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+})
+
+
+// mask 遮蔽数字
+const mask = (cc, num = 4, mask = '*') =>
+  ('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);
