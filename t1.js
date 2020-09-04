@@ -35,14 +35,14 @@ axios({
 
 
 
-// 4.格式化对象
+// 4.格式化对象(过滤字符)
 function filterObj(obj) {
     let new_obj = {}
-    if(obj === "" || obj === null || obj === undefined) return new_obj;
+    if (obj === "" || obj === null || obj === undefined) return new_obj;
     for (let i in obj) {
         if (Object.prototype.toString.call(obj[i]) === '[object Object]') {
             new_obj[i] = filterObj(obj[i])
-        }else if (obj[i] !== "" && obj[i] !== null && obj[i] !== undefined) {
+        } else if (obj[i] !== "" && obj[i] !== null && obj[i] !== undefined) {
             new_obj[i] = obj[i];
         }
     }
@@ -58,7 +58,7 @@ let obj = {
     d: "",
     e: null
 }
-console.log('最终结果',filterObj(obj))
+console.log('最终结果', filterObj(obj))
 
 
 // 5.es6去重简单的数据
@@ -89,3 +89,15 @@ export const lowerletter = Array.from({
         length: 26
     }, (_, index) =>
     String.fromCodePoint(97) + index)
+
+
+// 9.生成两位整数之间的随机数(包括两端的整数)
+export function randomB(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// 10.生成两位整数之间的随机数(不包括两端的整数)
+export function randomB(min, max) {
+    min += 1, max -= 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
