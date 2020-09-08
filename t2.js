@@ -133,3 +133,10 @@ const getScrollPosition = (el = window) => ({
 // mask 遮蔽数字
 const mask = (cc, num = 4, mask = '*') =>
   ('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);
+
+
+//   在字符串中插入新的字符串
+export const insertStr = (soure,index,newStr)=>{
+    let str = soure.slice(0,index)+ newStr + soure.slice(index);
+    return str;
+}
