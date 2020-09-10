@@ -140,3 +140,20 @@ export const insertStr = (soure,index,newStr)=>{
     let str = soure.slice(0,index)+ newStr + soure.slice(index);
     return str;
 }
+
+
+/**
+ * 上移下移(vue版本通过数据splice进行上移下移)
+ * (可操作DOM的直接操作DOM进行移动)
+ * 1、index移动的下标,item移动的内容
+ * 2、list最终的数据
+ * */ 
+export const MoveUp = ()=>{
+    this.list.splice(index - 1,0,item);
+    this.list.splice(index + 1,1);
+}
+
+export const MoveDown =(index,item)=>{
+    this.list.splice(index + 2, 0, item)
+    this.list.splice(index,1)
+}
