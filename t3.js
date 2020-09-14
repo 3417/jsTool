@@ -39,3 +39,26 @@ async function sleepyWork(){
     await sleep(1000);
     console.log('I woke up after 1 second');
 }
+
+
+// JS数组排列
+let templ = [],result = [];
+function doCuArr(arr,index){
+    for(let i = 0;i<arr[index].length;i++){
+        templ[index] = arr[index][i];
+        if(index != arr.length - 1){
+            doCuArr(arr,index + 1)
+        }else{
+            result.push(templ.join(','));
+        }
+    }
+}
+
+let arr = [
+    ['a','b','c'],
+    [1,2,3],
+    ['x','y','z']
+]
+
+doCuArr(arr,0);
+console.log(result);
