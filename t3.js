@@ -62,3 +62,24 @@ let arr = [
 
 doCuArr(arr,0);
 console.log(result);
+
+
+// css
+
+/**
+ * :root{
+    --some-thing:#ececec;
+    --some-size--px:40px;
+}
+
+
+.class-variables{
+    --some-color:#da7800;
+    --some-keword:italic;
+    --some-size:1.25em;
+    color:var(--some-color);
+    font-size:var(--some-size);
+    font-size:var(--some-size--px);
+}
+ * 
+*/
