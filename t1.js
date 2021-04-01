@@ -101,3 +101,83 @@ export function randomB(min, max) {
     min += 1, max -= 1;
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// 11.通过Object.fromEntries获取URL的传参
+let url = "?id=123&name=jack";
+Object.fromEntries(new URLSearchParams(url))
+
+/**
+ * 12.递归实现深拷贝
+ * a.数组对象暂没考虑
+ * b.如对象中有undefined则不会拷贝此内容
+ * */ 
+export function deepClone(source){
+    let target;
+    if(Object.prototype.toString.call(source) === '[object Object]'){
+        target = Array.isArray(source) ? [] : {}
+        for(let key in source){
+            if(source.hasOwnProperty(key)){
+                if(Object.prototype.toString.call(source[key]) != '[object Objext]'){
+                    target[key] = source[key]
+                }else{
+                    traget[key] = deepClone(source[key])
+                }
+            }
+        }
+    }else{
+        target = source
+    }
+    return target;
+}
+
+
+//13.解构数组对象嵌套
+let arr = [
+    {
+        name:"name1",
+        id:1,
+        children:[
+            {
+                name:'name11',
+                id:2            
+            },
+            {
+                name:'name12',
+                id:3            
+            }        
+        ]    
+    },
+    {
+        name:"name2",
+        id:4,
+        children:[
+            {
+                name:'name21',
+                id:5            
+            }        
+        ]    
+    },
+    {
+        name:"name3",
+        id:6,
+        children:[
+            {
+                name:'name31',
+                id:7,
+                children:[
+                    {
+                        name:'name31-1',
+                        id:8                    
+                    }                
+                ]            
+            }        
+        ]    
+    },
+    {
+        name:'name4',
+        id:9    
+    }
+]
+export function flatten(arr){
+    return [].concat(...arr.map(item=>[].concat(item,...flatten(item.children?item.children:[]))))
+}
