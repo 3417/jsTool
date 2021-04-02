@@ -181,3 +181,58 @@ let arr = [
 export function flatten(arr){
     return [].concat(...arr.map(item=>[].concat(item,...flatten(item.children?item.children:[]))))
 }
+
+// 14.封装axios基于iview-admin模式封装
+import axios from 'axios';
+let LoadingInstanceURl={};
+class httpRequest{
+    constructor(baseUrl){
+        this.baseUrl = baseUrl;
+    }
+    getInsideConfig(obj){
+        const config = {
+            baseURL:this.baseUrl,
+            timeout:3 * 60 *1000,
+            headers:{}
+        }
+        return config;
+    }
+    interceptors(instance,url){
+        instance.interceptors.request.use(config=>{
+            // 自定义请求参数.....
+            if(!config.noLoading){
+                LoadingInstanceURl[url] = true;
+            }
+            if(LoadingInstanceURl[url]){
+                // 开启弹窗显示
+            }
+            return config;
+        },error=>{
+            return Promise.reject(error)
+        })
+
+        instance.interceptors.response.use(resp=>{
+            // 添加自定义的数据处理条件
+            return resp;
+        },error=>{
+            let errorInfo = error.response;
+            switch(errorInfo){
+                case 404:
+                    // xxxxx
+                    break;
+            }
+
+
+            return Promise.reject(error);
+        })
+    }
+    request(options){
+        const instace = axios.create();
+        options = Object.assign(this.getInsideConfig(),options);
+        this.interceptors(instace,options.url)
+        return instace(optons)
+    }
+
+}
+
+export default httpRequest;
