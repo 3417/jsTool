@@ -198,3 +198,13 @@ export const getOS = ()=>{
     if (/win/i.test(appVersion)) return 'windows'
     if (/linux/i.test(appVersion)) return 'linux'
 }
+
+/**
+ * 获取某一年是否平年或者闰年
+ * 如果未传值，则获取当前的年份是否是闰年或平年
+ * */ 
+
+export const getLeapYear = (year)=>{
+     oYear = year??new Date().getFullYear();
+    (oYear % 4 == 0 && oYear % 100 != 0) || oYear % 400 == 0 ? '闰年' :'平年'
+}
