@@ -132,12 +132,12 @@ const getScrollPosition = (el = window) => ({
 
 // mask 遮蔽数字
 const mask = (cc, num = 4, mask = '*') =>
-  ('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);
+    ('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);
 
 
 //   在字符串中插入新的字符串
-export const insertStr = (soure,index,newStr)=>{
-    let str = soure.slice(0,index)+ newStr + soure.slice(index);
+export const insertStr = (soure, index, newStr) => {
+    let str = soure.slice(0, index) + newStr + soure.slice(index);
     return str;
 }
 
@@ -147,13 +147,54 @@ export const insertStr = (soure,index,newStr)=>{
  * (可操作DOM的直接操作DOM进行移动)
  * 1、index移动的下标,item移动的内容
  * 2、list最终的数据
- * */ 
-export const MoveUp = ()=>{
-    this.list.splice(index - 1,0,item);
-    this.list.splice(index + 1,1);
+ * */
+export const MoveUp = () => {
+    this.list.splice(index - 1, 0, item);
+    this.list.splice(index + 1, 1);
 }
 
-export const MoveDown =(index,item)=>{
+export const MoveDown = (index, item) => {
     this.list.splice(index + 2, 0, item)
-    this.list.splice(index,1)
+    this.list.splice(index, 1)
+}
+
+/**
+ * 获取浏览器的版本
+ * */
+
+
+export const getBower = () => {
+    let sys = {},
+        ua = navigator.userAgent.toLowerCase(),
+        s;
+    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? sys.ie = s[1]:
+        (s = ua.match(/msie ([\d\.]+)/)) ? sys.ie = s[1] :
+        (s = ua.match(/edge\/([\d\.]+)/)) ? sys.edge = s[1] :
+        (s = ua.match(/firefox\/([\d\.]+)/)) ? sys.firefox = s[1] :
+        (s = ua.match(/(?:opera|opr).([\d\.]+)/)) ? sys.opera = s[1] :
+        (s = ua.match(/chrome\/([\d\.]+)/)) ? sys.chrome = s[1] :
+        (s = ua.match(/version\/([\d\.]+).*safari/)) ? sys.safari = s[1] : 0;
+    if (sys.ie) return ('IE: ' + sys.ie)
+    if (sys.edge) return ('EDGE: ' + sys.edge)
+    if (sys.firefox) return ('Firefox: ' + sys.firefox)
+    if (sys.chrome) return ('Chrome: ' + sys.chrome)
+    if (sys.opera) return ('Opera: ' + sys.opera)
+    if (sys.safari) return ('Safari: ' + sys.safari)
+    return 'Unkonwn'
+}
+
+/**
+ * 获取操作系统
+ * */ 
+export const getOS = ()=>{
+    let userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || '';
+    let vendor = 'navigator' in window && 'vendor' in navigator && navigator.vendor.toLowerCase() || '';
+    let appVersion = 'navigator' in window && 'appVersion' in navigator && navigator.appVersion.toLowerCase() || '';
+
+    if (/iphone/i.test(userAgent) || /ipad/i.test(userAgent) || /ipod/i.test(userAgent)) return 'ios'
+    if (/android/i.test(userAgent)) return 'android'
+    if (/win/i.test(appVersion) && /phone/i.test(userAgent)) return 'windowsPhone'
+    if (/mac/i.test(appVersion)) return 'MacOSX'
+    if (/win/i.test(appVersion)) return 'windows'
+    if (/linux/i.test(appVersion)) return 'linux'
 }
