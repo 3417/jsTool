@@ -200,11 +200,34 @@ export const getOS = ()=>{
 }
 
 /**
- * 获取某一年是否平年或者闰年
+ * TODO:获取某一年是否平年或者闰年(已重复)
  * 如果未传值，则获取当前的年份是否是闰年或平年
  * */ 
 
 export const getLeapYear = (year)=>{
      oYear = year??new Date().getFullYear();
     (oYear % 4 == 0 && oYear % 100 != 0) || oYear % 400 == 0 ? '闰年' :'平年'
+}
+
+/**
+ * (来源：outils前端工具库)
+ * @desc H5软键盘缩回、弹起回调
+ * 当软件键盘弹起会改变当前 window.innerHeight，监听这个值变化
+ * @param {Function} downCb 当软键盘弹起后，缩回的回调
+ * @param {Function} upCb 当软键盘弹起的回调
+ */
+
+ export function windowResize(downCb, upCb) {
+	var clientHeight = window.innerHeight;
+	downCb = typeof downCb === 'function' ? downCb : function () {}
+	upCb = typeof upCb === 'function' ? upCb : function () {}
+	window.addEventListener('resize', () => {
+		var height = window.innerHeight;
+		if (height === clientHeight) {
+			downCb();
+		}
+		if (height < clientHeight) {
+			upCb();
+		}
+	});
 }
