@@ -63,6 +63,14 @@ let arr = [
 doCuArr(arr,0);
 console.log(result);
 
+/**
+ * 快速生成26个英文字母---大写-AND-小写
+ * 
+ * */ 
+
+ Array.from({length:26},(_,index)=> String.fromCodePoint(65 + index)).join(",") //-大写
+
+ Array.from({length:26},(_,index)=>String.fromCodePoint(97 + index)).join(",")  //-小写
 
 // css
 
