@@ -78,3 +78,28 @@ socket.addEventListener('open', function (event) {
 socket.addEventListener('message', function (event) {
     console.log('Message from server ', event.data);
 });
+
+
+/**
+ * 
+ * Array.from()  遍历数组对象返回数据
+ * 
+ * */ 
+
+let plants1 = [
+    {
+        name:"sale"
+    },
+    {
+        name:"Uray"
+    },
+    {
+        name:"Venus"
+    },
+    {
+        name:"Mesh"
+    }
+]
+
+let wName = Array.from(plants1,item=>item.name)
+console.log(wName)
