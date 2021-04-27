@@ -103,3 +103,23 @@ let plants1 = [
 
 let wName = Array.from(plants1,item=>item.name)
 console.log(wName)
+
+
+// 快速生成超链接
+let a = '超链接'.link('http://www.google.com')
+console.log("快速生成超链接==>",a)
+
+// RGB to Hex
+function RGBtoHEX(rgb){
+    return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
+  }
+
+// 金钱格式化
+let money = 12342123;
+
+// mth1
+money.toLocaleString('en-US');
+// mth2
+Intl.NumberFormat().format(money);
+// mth3
+String(money).replace(/\B(?=(\d{3})+(?!\d))/g,",");
