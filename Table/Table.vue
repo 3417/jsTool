@@ -44,16 +44,18 @@
             </div>
         </el-table>
         <!-- 分页 -->
-        <el-pagination
-            background
-            layout="prev,sizes,pager,next,jumper"
-            :page-sizes="[30, 40, 50, 80]"
-            :total="pageConfig.total"
-            :page-size="pageConfig.pageSize"
-            :current-page="pageConfig.pageNum"
-            @current-change="onPageChange"
-            @size-change="onSizeChange"
-        ></el-pagination>
+        <div class="pagination_container">
+            <el-pagination
+                background
+                layout="prev,sizes,pager,next,jumper"
+                :page-sizes="[30, 40, 50, 80]"
+                :total="pageConfig.total"
+                :page-size="pageConfig.pageSize"
+                :current-page="pageConfig.pageNum"
+                @current-change="onPageChange"
+                @size-change="onSizeChange"
+            ></el-pagination>
+        </div>
     </div>
 </template>
 
@@ -104,6 +106,8 @@ export default {
 <style lang='scss' scoped>
 // 根据相关的UI图实现对应的样式
 .common_table {
-    // xxxxx
+    .pagination_container{
+        text-align: right;
+    }
 }
 </style>
