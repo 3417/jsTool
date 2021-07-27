@@ -220,3 +220,17 @@ notify("中奖提示", {
         window.focus();
     }
 })
+
+
+// 从右删除n个元素
+
+
+function dropright(arr,n = 0){
+    return n < arr.length ? arr.slice(0,arr.length - n) :[];
+}
+
+// 返回数组下标的间隔nth的元素
+
+function everNth(arr,nth){
+    return arr.filter((v,i)=>i % nth === nth - 1);
+}
