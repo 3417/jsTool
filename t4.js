@@ -32,7 +32,7 @@ export const filterGlobalPermission = (el, binding, vnode) => {
     let permissionList = [],
         permissions = [];
     let storageData = sessionStorage.getItem("AUTH_LIST");
-    let authList = JSON.parse(storageData) ? ? [];
+    let authList = JSON.parse(storageData) ?? [];
     for (let auth of authList) {
         permissionList.push(auth);
     }
@@ -59,8 +59,7 @@ import hasPermission from '@/utils/hasPermission.js'
 Vue.use(hasPermission);
 
 // xxxx.vue
-<
-el - button v - has = "car:info:add" > < /el-button>
+<el-button v-has="car:info:add"> </el-button>
 
 
 /**
