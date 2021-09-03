@@ -1,7 +1,7 @@
 <template>
     <div class="list">
         <h2>List And refreshed And Tab Switch</h2>
-        <van-tabs v-model="active" @change="onChange">
+        <van-tabs v-model="active" @click="onClick">
             <van-tab :title="item.title" :name="item.value" v-for="(item,index) in tabList" :key="index">
                 <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
                     <van-list
@@ -42,7 +42,7 @@ export default {
             finished: false,
             error: false, //请求出错
             refreshing: false, //下拉刷新
-            pageNum:0,  //初始化加载默认为0开始
+            pageNum:1,  //初始化加载默认为1开始
             pageSize:10 //每页加载多少条数
         }
     },
@@ -59,12 +59,12 @@ export default {
                 this.list = [];
                 this.refreshing = false;
             }
-            this.pageNum++;
             let params = {
                 pageNum:this.pageNum,
                 pageSize:this.pageSize,
             }
             axios.post('xxxxx',params).then(resp=>{
+                this.pageNum++;
                 this.loading = false;
                 this.list = resp.list;
                 if(resp.curPage == this.pageNum){
@@ -74,8 +74,8 @@ export default {
                 this.error = true;
             })
         },
-        // tab切换
-        onChange(){
+        // tab(click切换)
+        onClick(){
             this.onRefresh();
         }
 
