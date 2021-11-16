@@ -59,7 +59,7 @@ import hasPermission from '@/utils/hasPermission.js'
 Vue.use(hasPermission);
 
 // xxxx.vue
-<el-button v-has="car:info:add"> </el-button>
+<el-button v-has="car:info:add"></el-button>
 
 
 /**
