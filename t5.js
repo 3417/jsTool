@@ -42,3 +42,12 @@ let reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6-20}$/
         }, 
 */}
 
+
+// 解构赋值别名
+const carLine = {
+    firstName:'Jock',
+    age:22
+}
+const {firstName:name,age:af} = carLine;
+console.log(name,af) //别名
+
