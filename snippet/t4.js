@@ -233,3 +233,6 @@ function dropright(arr,n = 0){
 function everNth(arr,nth){
     return arr.filter((v,i)=>i % nth === nth - 1);
 }
+
+// 判断页面是否隐藏
+const ishidden = ()=> !document.hidden   //true-展示  false-隐藏

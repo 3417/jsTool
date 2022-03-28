@@ -60,7 +60,7 @@ function request(method, url, params, isShowMsg = true) {
                             })
                         }    
                     default
-                         resolve(v);
+                        resolve(v);
                         break;
                 }
             },
