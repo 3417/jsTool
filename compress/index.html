@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas压缩图片</title>
+</head>
+
+<body>
+    <div class="upload">
+        <input type="file" onchange="onChange(event)" />
+        <p class="s_text">展示内容区域</p>
+        <img src="" class="showImg" alt="转换之前的图片">
+        <img src="" class="cshowImg" alt="转换后的图片">
+    </div>
+    <script type="module">
+        import {fileToBase64ByQuality} from './index.js'
+        window.onChange = (e)=>{
+            const file = e.target.files[0]
+            fileToBase64ByQuality(file).then(res=>{
+                console.log('——data=>',res);
+                document.querySelector('.showImg').setAttribute('src',res.base64);
+                document.querySelector('.cshowImg').setAttribute('src',res.cbase64);
+            })
+        }
+    </script>
+</body>
+
+</html>
