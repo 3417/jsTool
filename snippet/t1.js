@@ -64,6 +64,20 @@ console.log('最终结果', filterObj(obj))
 // 5.es6去重简单的数据
 let templ = [...new Set([1, 1, 2, 2, 3, 3])]
 let templ2 = Array.from(new Set([1, 1, 2, 2, 3, 3]))
+export const unique = (arr)=>{
+    if(Array.hasOwnProperty('from')){
+        return Array.from(new Set(arr))
+    }else{
+        let n = {},r = [];
+        for(let i=0;i<arr.length;i++){
+            if(!n[arr[i]]){
+                n[arr[i]] = true;
+                r.push(arr[i])
+            }
+        }
+        return r;
+    }
+}
 
 // 6.二维数组简化为一维数组
 let flats = [
