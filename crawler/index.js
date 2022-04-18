@@ -41,4 +41,4 @@ let downloadPic = function(src, dest){
 }
 
 // 执行
-download();
+// download();
