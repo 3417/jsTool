@@ -1,7 +1,10 @@
 let _dom = document.getElementById("draw");
-const {width,height} = _dom.getBoundingClientRect();
-console.log(_dom.getBoundingClientRect())
-function setCanvasBg(){
+const {
+    width,
+    height
+} = _dom.getBoundingClientRect();
+
+function setCanvasBg() {
     let canvas = document.createElement('canvas')
     canvas.id = 'canvas';
     canvas.width = width;
@@ -15,6 +18,7 @@ let rubber = document.getElementById('rubber');
 let clear = document.getElementById('clear');
 let line = document.getElementById('line');
 let colorbox = document.getElementById('colorbox');
+let out = document.getElementById('out');
 
 let color = '#000'
 let state = 'paint'
@@ -22,7 +26,7 @@ let lineWidth = 3;
 let canvas = document.getElementById('canvas')
 let ctx = canvas.getContext("2d");
 
-function drawLine(x,y, x2,y2,lineWidth){
+function drawLine(x, y, x2, y2, lineWidth) {
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = color;
     ctx.lineCap = "round";
@@ -32,30 +36,33 @@ function drawLine(x,y, x2,y2,lineWidth){
     ctx.stroke();
     ctx.closePath();
 }
-function cleanDraw(x, y, size){
+
+function cleanDraw(x, y, size) {
     ctx.clearRect(x - size / 2, y - size / 2, size, size);
 }
-_dom.onmousedown=(e)=>{
+_dom.onmousedown = (e) => {
     ctx.beginPath();
-    const {top,left} = _dom.getBoundingClientRect();
+    const {
+        top,
+        left
+    } = _dom.getBoundingClientRect();
     let startPosition = {
         x: e.clientX - left,
         y: e.clientY - top
     }
-    _dom.onmousemove=(ev)=>{
+    _dom.onmousemove = (ev) => {
         let newPoint = {
             x: ev.clientX - left,
             y: ev.clientY - top
         }
-        if(state == 'paint'){
-            drawLine(startPosition.x, startPosition.y, newPoint.x, newPoint.y,lineWidth);
-        }
-        else if(state == 'rubber'){
+        if (state == 'paint') {
+            drawLine(startPosition.x, startPosition.y, newPoint.x, newPoint.y, lineWidth);
+        } else if (state == 'rubber') {
             cleanDraw(startPosition.x, startPosition.y, 30)
         }
         startPosition = newPoint
     }
-    _dom.onmouseup=(e)=>{
+    _dom.onmouseup = (e) => {
         _dom.onmousemove = null
     }
 }
@@ -72,10 +79,24 @@ clear.onclick = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 // todo:限制条件还存在点问题
-line.oninput = (e)=>{
-    if(e.target.value.length>2){
-        e.target.value = e.target.value.slice(0,2);
+line.oninput = (e) => {
+    if (e.target.value.length > 2) {
+        e.target.value = e.target.value.slice(0, 2);
         e.target.value = Number(e.target.value) > 16 ? 16 : e.target.value;
     }
     lineWidth = e.target.value;
+}
+
+out.onclick = () => {
+    let url = canvas.toDataURL('image/png');
+    let randomName = Math.random().toString(36).substring(2);
+    download(url,randomName)
+}
+
+function download(url,filename) {
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url); // 释放
 }
