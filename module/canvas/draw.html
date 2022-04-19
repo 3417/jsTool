@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas写字板</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .draw{
+            width: 800px;
+            height: 400px;
+            border: 1px solid #eee;
+            margin: 20px auto 10px;
+            box-sizing: border-box;
+        }
+        .center{
+            text-align: center;
+        }
+        h2{
+            margin-top: 10px;
+        }
+
+        .tool{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tool div{
+            background: #eee;
+            border-radius: 2px;
+            box-shadow: 0 0 2px #ddd;
+            padding: 6px 12px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .tool div:hover{
+            color: #2020ee;
+        }
+        .tool div:not(:last-child){
+            margin-right: 20px;
+        }
+
+        .tool .line input{
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="center">签字版</h2>
+    <div class="draw" id="draw"></div>
+    <div class="tool">
+        <div class="pen" id="pen">笔</div>
+        <div class="line">
+            <input type="number" value="3" id="line" max="16" min="3">
+        </div>
+        <div class="rubber" id="rubber">橡皮</div>
+        <div class="clear" id="clear">清除全部</div>
+        <div class="color">
+            <input type="color" id="colorbox">
+        </div>
+    </div>
+    <script src="./draw.js"></script>
+</body>
+</html>

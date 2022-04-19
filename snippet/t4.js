@@ -642,20 +642,13 @@ export const checkPwd = (str) => {
     return Lv;
 }
 
-// 函数节流器(有待验证)
-export const debouncer = (fn,time,interval = 200)=>{
-    if(time - (window.debounceTimestamp || 0) > interval){
-        fn && fn();
-        window.debounceTimestamp = time;
-    }
-}
-
 // 追加URL参数(有待验证)
 export const appendQuery = (url,key,value)=>{
-    options = `${key}&${value}`;
+    let options = `${key}=${value}`;
     if(url.includes('?')){
         url+='&'+options
     }else{
         url+='?'+options
     }
+    return url;
 }
