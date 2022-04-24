@@ -652,3 +652,17 @@ export const appendQuery = (url,key,value)=>{
     }
     return url;
 }
+
+// 生成随机ID
+const randomID = len => Math.random().toString(36).substr(3,len);
+const id = randomID(10);
+
+
+// 生成随机颜色
+const randomColor = () => '#'+Math.floor(Math.random()*0xffffff).toString(16).padEnd(6,'0');
+const color = randomColor();
+
+// 精确小数
+const roundNum = (num,decimal)=>Math.round(num * 10 ** decimal) / 10 ** decimal
+const num = roundNum(1.2345,2)
+
