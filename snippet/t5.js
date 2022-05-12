@@ -51,3 +51,14 @@ const carLine = {
 const {firstName:name,age:af} = carLine;
 console.log(name,af) //别名
 
+
+// 结合递归函数可以使用setTimeout 实现setInterval 一样的功能(时间调用)
+let clock = document.querySelector('.clock');
+function myInterval(){
+    let d = new Date();
+    clock.innerText = d.toLocaleString();
+    setTimeout(myInterval,1000);
+}
+
+myInterval()
+
