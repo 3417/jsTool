@@ -118,3 +118,18 @@ p:nth-child(2) {
 .g-container:hover {
     clip-path: circle(460px at 44px 44px);
 }
+
+
+/* 
+实现不同的页面展示不同的颜色
+box-shadow:0 0 0 200px #b5e0ba,0 0 0 400px #5d3a3a;
+
+
+进阶写法：
+这里有一些小知识点，HTML5 支持属性后面不用引号包住，
+又譬如 box-shadow: 0 0 0 400px #5d3a3a 是可以压缩到 box-shadow:0+0+0+5in#5d3a3a，
+CSS 中 1in=96px，但是画布只有 400px，5in 大于 400px，
+也没有问题，能够充满画布，但是 400px 相对 5in 字符多了 2 个
+box-shadow:0+0+0+5in#5d3a3a;
+
+*/
