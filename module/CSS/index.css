@@ -1,0 +1,120 @@
+.session1 p {
+    font-size: 5em;
+}
+.session1{
+    background-color: #999;
+}
+
+p:nth-child(1) {
+    color: #999;
+    text-shadow:
+        1px 1px 1px #fff,
+        -1px -1px 1px #000;
+}
+
+p:nth-child(2) {
+    color: #999;
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+}
+
+.session2 {
+    font-size: 1em;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-around;
+    user-select: none;
+}
+
+.session2 p:nth-child(1),
+.session2 p:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    background: #e9ecef;
+    text-align: center;
+    color: #333;
+    border-radius: 16px;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, .4), -7px -7px 12px rgba(255, 255, 255, .9);
+}
+
+.session2 p:nth-child(1) {
+    transition: .2s all;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, .4), 
+    -7px -7px 12px rgba(255, 255, 255, .9),
+    inset 0 0 0x rgba(255, 255, 255, .9),
+    inset 0 0 0 rgba(0, 0, 0, .4);
+}
+
+.session2 p:nth-child(1):active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, .4),
+        0 0 0 rgba(255, 255, 255, .9), inset -7px -7px 12px rgba(255, 255, 255, .9), inset 7px 7px 12px rgba(0, 0, 0, .4);
+}
+
+.session2 p:nth-child(2) {
+    box-shadow: inset -7px -7px 12px rgba(255, 255, 255, .9), inset 7px 7px 12px rgba(0, 0, 0, .4);
+}
+
+
+.d3,.d3_warp{
+    width:120px;
+    height: 120px;
+    background-color: #eea51c;
+    transform-style: preserve-3d;
+    perspective: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    animation: rotate 5s linear infinite;
+}
+.d3_warp{
+    background-color: transparent;
+    animation: reverseRotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotateX(0deg) rotateZ(0deg);
+    }
+    50%{
+        transform: rotateX(40deg) rotateZ(180deg);
+    }
+    100%{
+        transform: rotateX(0deg) rotateZ(360deg);
+    }
+}
+
+@keyframes reverseRotate {
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+
+.bg{
+    width: 400px;
+    height: 300px;
+    background-image: repeating-conic-gradient(var(--color) 0 25%, transparent 0 50%);
+      background-size: 16px 16px;
+}
+.bg1{
+    --color:red;
+}
+.g-warps{
+    padding: 10px;
+    background-color: #999;
+}
+.g-container {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    transition: clip-path .3s linear;
+    clip-path: circle(20px at 44px 44px);
+    background: #fff;
+}
+.g-container:hover {
+    clip-path: circle(460px at 44px 44px);
+}

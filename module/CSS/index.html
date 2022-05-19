@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS样式</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="App">
+        <h2>CSS 文字效果</h2>
+        <div class="session1">
+            <p>愚蠢的大海</p>
+            <p>愚蠢的郑军</p>
+        </div>
+        <div class="session2">
+            <p>复刻雕印</p>
+            <p>复刻雕印</p>
+        </div>
+        <hr />
+        <h2>3D动画效果</h2>
+        <div class="d3_warp">
+            <div class="d3">3D动画效果</div>
+        </div>
+        <hr />
+        <h2>CSS 实现透明背景底图</h2>
+        <div class="bg bg1"></div>
+        <div class="g-warps">
+            <div class="g-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const _data = {
+            data(){
+                return {
+                    msg:'hello'
+                }
+            }
+        }
+        Vue.createApp(_data).mount('#App')
+    </script>
+</body>
+</html>
